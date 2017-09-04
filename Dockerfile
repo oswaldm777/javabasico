@@ -15,8 +15,8 @@ chown -R netbeans:netbeans /data $HOME/.netbeans $HOME/NetBeansProjects && \
 chmod 777 -R $HOME/.netbeans $HOME/NetBeansProjects /data
 
 VOLUME /data
-#VOLUME ~/.netbeans
-#VOLUME ~/NetBeansProjects
+VOLUME ~/.netbeans
+VOLUME ~/NetBeansProjects
 
 
 ENV MAVEN_VERSION 3.5.0
@@ -32,9 +32,9 @@ RUN wget http://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/ap
 #RUN chown -R netbeans:netbeans $HOME/tomcat
 
 USER netbeans
-COPY netbeans/netbeans.zip $HOME
+#COPY netbeans/netbeans.zip $HOME
 
-# RUN wget http://download.netbeans.org/netbeans/8.2/final/zip/netbeans-8.2-201609300101-javaee.zip -O ~/netbeans.zip -q && \
+RUN wget http://download.netbeans.org/netbeans/8.2/final/zip/netbeans-8.2-201609300101-javaee.zip -O ~/netbeans.zip -q && \
 RUN unzip ~/netbeans.zip -q -d ~ && \
 rm ~/netbeans.zip
 
